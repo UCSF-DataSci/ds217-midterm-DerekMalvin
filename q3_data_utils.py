@@ -131,6 +131,8 @@ def filter_data(df: pd.DataFrame, filters: list) -> pd.DataFrame:
         >>> filters = [{'column': 'age', 'condition': 'in_range', 'value': [18, 65]}]
         >>> df_filtered = filter_data(df, filters)
     """
+    result = df.copy()
+
     for filter_dict in filters:
         column_name = filter_dict['column']
         condition_type = filter_dict['condition']
