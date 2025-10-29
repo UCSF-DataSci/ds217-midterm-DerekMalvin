@@ -1,0 +1,7 @@
+Missing Data Report
+
+Rows: 10000 -> 10000 (removed 0)
+Strategy: Median imputation + drop critical missing
+
+Missing before: 4764
+Missing after: 0

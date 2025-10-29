@@ -97,13 +97,14 @@ def generate_sample_data(filename: str, config: dict) -> None:
     # TODO: Parse config values (convert strings to int)
     # TODO: Generate random numbers and save to file
     # TODO: Use random module with config-specified range
-    rows = int(config.get('sample_data_rows', 0))
-    min_val = int(config.get('sample_data_min', 0))
-    max_val = int(config.get('sample_data_max', 0))
-    with open(filename, 'w') as f:
-        for i in range(rows):
-            number = random.randint(min_val, max_val)
-            f.write(f"{number}\n")
+    num_rows = int(config.get('sample_data_rows', 0))
+    min_value = int(config.get('sample_data_min', 0))
+    max_value = int(config.get('sample_data_max', 0))
+    with open(filename, 'w') as output_file:
+        for count in range(num_rows):
+            random_number = random.randint(min_value, max_value)
+            output_file.write(f"{random_number}\n")
+
 
 def _median_from_list(nums):
     """Return median of a list of numbers as float."""

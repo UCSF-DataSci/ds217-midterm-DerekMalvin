@@ -1,3 +1,4 @@
+#!/bin/bash
 # TODO: Add shebang line: #!/bin/bash
 # Assignment 5, Question 8: Pipeline Automation Script
 # Run the clinical trial data analysis pipeline
@@ -13,4 +14,16 @@ echo "Starting clinical trial data pipeline..." > reports/pipeline_log.txt
 # Use either `$?` or `||` operator to check exit codes and stop on failure
 # Add a log entry for each notebook execution or failure
 # jupyter nbconvert --execute --to notebook q4_exploration.ipynb
+jupyter nbconvert --execute --to notebook q4_exploration.ipynb || { echo "Q4 failed" >> reports/pipeline_log.txt; exit 1; }
+echo "Q4 completed" >> reports/pipeline_log.txt
+
+jupyter nbconvert --execute --to notebook q5_missing_data.ipynb || { echo "Q5 failed" >> reports/pipeline_log.txt; exit 1; }
+echo "Q5 completed" >> reports/pipeline_log.txt
+
+jupyter nbconvert --execute --to notebook q6_transformation.ipynb || { echo "Q6 failed" >> reports/pipeline_log.txt; exit 1; }
+echo "Q6 completed" >> reports/pipeline_log.txt
+
+jupyter nbconvert --execute --to notebook q7_groupby.ipynb || { echo "Q7 failed" >> reports/pipeline_log.txt; exit 1; }
+echo "Q7 completed" >> reports/pipeline_log.txt
+
 echo "Pipeline complete!" >> reports/pipeline_log.txt
