@@ -1,0 +1,5 @@
+Starting clinical trial data pipeline...
+Q4 completed
+Q5 completed
+Q6 completed
+Q7 failed
