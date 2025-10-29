@@ -29,9 +29,9 @@ def parse_config(filepath: str) -> dict:
     with open(filepath, "r") as f:
         for line in f:
             line = line.strip()
-        if line and "=" in line:
-            key, value = line.split("=", 1)
-            cfg[key.strip()] = value.strip()
+            if line and "=" in line:
+                key, value = line.split("=", 1)
+                cfg[key.strip()] = value.strip()
     return cfg
 
 
@@ -135,7 +135,6 @@ def calculate_statistics(data: list) -> dict:
         30.0
     """
     # TODO: Calculate stats
-def calculate_statistics(data) -> dict:
     """
     Calculate Statistics (Mean, Median, Sum, Count)
     """
