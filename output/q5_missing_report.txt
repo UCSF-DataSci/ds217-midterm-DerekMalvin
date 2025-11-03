@@ -1,7 +1,4 @@
 Missing Data Report
-
-Rows: 10000 -> 10000 (removed 0)
-Strategy: Median imputation + drop critical missing
-
-Missing before: 4764
-Missing after: 0
+Rows: 10000 to 10000 (removed 0)
+Strategy: Hybrid - mean for ['systolic_bp', 'diastolic_bp'], median for ['bmi', 'cholesterol_total', 'cholesterol_hdl', 'cholesterol_ldl', 'glucose_fasting', 'adherence_pct']
+Missing: 4764 to 0

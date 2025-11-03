@@ -59,15 +59,22 @@ def validate_config(config: dict) -> dict:
     """
     # TODO: Implement with if/elif/else
     results = {}
-    if config['sample_data_rows'].isdigit() and int(config['sample_data_rows']) > 0:
+    
+    rows = config['sample_data_rows']
+    minimum = config['sample_data_min']
+    maximum = config['sample_data_max']
+    
+    if rows.isdigit() and int(rows) > 0:
         results['sample_data_rows'] = True
     else:
         results['sample_data_rows'] = False
-    if config['sample_data_min'].isdigit() and int(config['sample_data_min']) >= 1:
+    
+    if minimum.isdigit() and int(minimum) >= 1:
         results['sample_data_min'] = True
     else:
         results['sample_data_min'] = False
-    if config['sample_data_max'].isdigit() and int(config['sample_data_max']) > int(config['sample_data_min']):
+    
+    if maximum.isdigit() and int(maximum) > int(minimum):
         results['sample_data_max'] = True
     else:
         results['sample_data_max'] = False
@@ -98,26 +105,12 @@ def generate_sample_data(filename: str, config: dict) -> None:
     # TODO: Generate random numbers and save to file
     # TODO: Use random module with config-specified range
     num_rows = int(config.get('sample_data_rows', 0))
-    min_value = int(config.get('sample_data_min', 0))
-    max_value = int(config.get('sample_data_max', 0))
+    minimum = int(config.get('sample_data_min', 0))
+    maximum = int(config.get('sample_data_max', 0))
     with open(filename, 'w') as output_file:
         for count in range(num_rows):
-            random_number = random.randint(min_value, max_value)
+            random_number = random.randint(minimum, maximum)
             output_file.write(f"{random_number}\n")
-
-
-def _median_from_list(nums):
-    """Return median of a list of numbers as float."""
-    n = len(nums)
-    if n == 0:
-        return 0.0
-    sorted_nums = sorted(nums)
-    mid = n // 2
-    if n % 2 == 1:
-        return float(sorted_nums[mid])
-    else:
-        return (sorted_nums[mid - 1] + sorted_nums[mid]) / 2.0
-
 
 def calculate_statistics(data: list) -> dict:
     """
@@ -135,9 +128,6 @@ def calculate_statistics(data: list) -> dict:
         30.0
     """
     # TODO: Calculate stats
-    """
-    Calculate Statistics (Mean, Median, Sum, Count)
-    """
     if not data:
         return {'mean': 0.0, 'median': 0.0, 'sum': 0, 'count': 0}
 
